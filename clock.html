@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AVP Klok</title>
+<script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<link rel="stylesheet" href="clock.css">
+</head>
+<body>
+<div id="stage">
+  <div id="clock"><span id="time">--:--</span><span id="date"></span></div>
+</div>
+
+<button id="gear" type="button" title="Instellingen">&#9881;</button>
+
+<form id="settings" hidden>
+  <h2>AVP Klok</h2>
+  <label>Modus
+    <select name="mode">
+      <option value="clock">Huidige tijd</option>
+      <option value="countdown">Aftellen tot tijdstip</option>
+    </select>
+  </label>
+  <label class="cd">Doeltijd <input name="target" type="time" step="1"></label>
+  <label class="cd"><input name="overtime" type="checkbox"> Na afloop doortellen (rood)</label>
+  <label class="ck"><input name="h24" type="checkbox"> 24-uurs notatie</label>
+  <label><input name="seconds" type="checkbox"> Seconden tonen</label>
+  <label class="ck"><input name="date" type="checkbox"> Datum tonen</label>
+  <label>Lettertype
+    <select name="font">
+      <option>Segoe UI</option><option>Arial</option><option>Calibri</option>
+      <option>Consolas</option><option>Bahnschrift</option><option>Verdana</option>
+    </select>
+  </label>
+  <label>Dikte
+    <select name="weight">
+      <option value="300">Licht</option><option value="400">Normaal</option>
+      <option value="600">Halfvet</option><option value="700">Vet</option>
+    </select>
+  </label>
+  <label>Tekstkleur <input name="color" type="color"></label>
+  <label>Achtergrond <input name="bg" type="color"></label>
+  <div class="row">
+    <button type="button" id="reset">Standaard</button>
+    <button type="submit">Klaar</button>
+  </div>
+</form>
+
+<script src="clock.js"></script>
+</body>
+</html>
