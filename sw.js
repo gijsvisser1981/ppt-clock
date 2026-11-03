@@ -1,6 +1,6 @@
 // Network-first met cache-fallback: updates komen gewoon door,
 // maar zonder internet (bv. op locatie) laadt de klok uit de cache.
-var CACHE = "avpclock-v1";
+var CACHE = "avpclock-v2";
 var FILES = [
   "clock.html",
   "clock.css",
