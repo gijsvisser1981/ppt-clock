@@ -12,11 +12,7 @@
     font: "Segoe UI",
     weight: "600",
     color: "#ffffff",
-    bg: "#000000",
-    transparent: false,
-    shadow: false,
-    shadowColor: "#000000",
-    shadowSize: "2"     // 1 = subtiel, 2 = normaal, 3 = sterk
+    bg: "#000000"
   };
 
   var cfg = Object.assign({}, DEFAULTS);
@@ -134,12 +130,7 @@
   function applyStyle() {
     var root = document.documentElement.style;
     root.setProperty("--fg", cfg.color);
-    root.setProperty("--bg", cfg.transparent ? "transparent" : cfg.bg);
-    // schaduw in em, zodat hij meeschaalt met de cijfers
-    var k = +cfg.shadowSize || 2;
-    root.setProperty("--shadow", cfg.shadow
-      ? (0.02 * k) + "em " + (0.02 * k) + "em " + (0.03 * k) + "em " + cfg.shadowColor
-      : "none");
+    root.setProperty("--bg", cfg.bg);
     root.setProperty("--font", '"' + cfg.font + '"');
     root.setProperty("--weight", cfg.weight);
     lastShape = "";
@@ -154,12 +145,7 @@
       if (el.type === "checkbox") el.checked = !!cfg[k];
       else el.value = cfg[k];
     });
-    formClass();
-  }
-
-  function formClass() {
-    form.className = "mode-" + cfg.mode + (cfg.shadow ? "" : " no-shadow");
-    form.elements.bg.disabled = !!cfg.transparent;
+    form.className = "mode-" + cfg.mode;
   }
 
   function readForm() {
@@ -168,7 +154,7 @@
       if (!el) return;
       cfg[k] = el.type === "checkbox" ? el.checked : el.value;
     });
-    formClass();
+    form.className = "mode-" + cfg.mode;
   }
 
   form.addEventListener("input", function () { readForm(); applyStyle(); save(); });
